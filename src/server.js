@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import morgan from "morgan";
+const morgan = require('morgan');
 import mongoose from "mongoose";
 import allRoutes from "./routes/allRoutes.js"
 // import multer from "multer"
