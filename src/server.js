@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import morgan from "morgan";
+// import morgan from "morgan";
 import mongoose from "mongoose";
 import allRoutes from "./routes/allRoutes.js"
 // import multer from "multer"
@@ -33,8 +33,8 @@ app.get("/", (req, res)=>{
 
 // morgan for logs
 
-if(process.env.NODE_ENV ==="development"){ 
-    app.use(morgan('combined'))};
+// if(process.env.NODE_ENV ==="development"){ 
+//     app.use(morgan('combined'))};
 
 app.use("/api/v1", allRoutes)
 
