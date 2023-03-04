@@ -1,5 +1,4 @@
 import Blog from "../model/blog.js";
-// import {blogs} from "../model/dummy.js";
 
 class  blogController{
     // functions to get all blogs
@@ -21,7 +20,6 @@ class  blogController{
     // get one blog
     static async getBlog(req, res){
         const {id}= req.params;
-        // const blogId=Number(id);
         const blog =await Blog.findOne({_id:id});
 
         if(!blog){
@@ -38,9 +36,6 @@ class  blogController{
 static async createBlog(req, res){
     try {
         const {title,category, content, author}= req.body;
-        // const id=blogs.length +1;
-        // const newBlog ={id,title,content,author}
-        // blogs.push(newBlog)
         const newBlog= await Blog.create({title,category,content,author}); 
         res.status(201).json({
             message:"New Blog Created Succesfully",

@@ -1,5 +1,4 @@
 import Message from "../model/message.js";
-// import {messages} from "../model/dummy.js";
 
 class  messageController{
     // functions to get all messages
@@ -38,9 +37,7 @@ class  messageController{
 static async createMessage(req, res){
     try {
         const {fullname,email, from, message}= req.body;
-        // const id=messages.length +1;
-        // const newmessage ={id,fullname,from,message}
-        // messages.push(newmessage)
+
         const newMessage= await Message.create({fullname,email,from,message}); 
         res.status(201).json({
             message:"New Message Created Succesfully",
@@ -60,7 +57,6 @@ static async createMessage(req, res){
 static async updateMessage(req,res){
     // console.log(req.params.id)
     try {
-        // const id= req.params.id  //used in ES5
         const {id}=req.params; //used in ES6
 
         // body to be updated

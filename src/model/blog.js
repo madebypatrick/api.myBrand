@@ -16,11 +16,7 @@ const blogSchema =new mongoose.Schema({
         required:true
 
     },
-    // image:{
-    //     data:Buffer,
-    //     contentType: String,
 
-    // },
     author:{
         type:String,
         required:true

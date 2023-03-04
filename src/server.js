@@ -23,18 +23,6 @@ const app =express()
 app.use(cors());
 app.use(bodyParser.json())
 
-// Image storage
-// const Storage =multer.diskStorage({
-//     destination:'uploads',
-//     filename:(req, file, cb)=>{
-//         cb(null,file.originalname);
-//     },
-// });
-
-// const upload=multer({
-//     storage:Storage
-// }).single('testImage')
-
 // route -homeroute
 app.get("/", (req, res)=>{
     res.status(200).send( `<h1 style="text-align: center; color: green; margin-top: 20vh">Welcome to my Brand</h1>`)
@@ -59,18 +47,9 @@ const con =()=>mongoose.connect(process.env.MONGODB_URL,{
 
 })
 
-// connection instance
-// const con = ()=> mongoose.connect(process.env.MONGODB_URL, {
-//     useNewUrlParser:true,
-//     useUnifiedTopology:true
-// })
-
 // listening to your server instance
 
 const startServer =()=> app.listen(port); //()=>{
-//     console.log(`Server listening at http://${host}:${port}`);  
-// })
-// promise to await for both con and startserver instance
 
 Promise.all([con(),startServer()])
     .then(()=>{
@@ -80,6 +59,3 @@ Promise.all([con(),startServer()])
         console.log(err)
     })
 
-// app.listen(port, () => {
-//     console.log(`Server listening at http://${host}:${port}`);
-//   });
