@@ -2,10 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-// import morgan from "morgan";
 import mongoose from "mongoose";
 import allRoutes from "./routes/allRoutes.js"
-// import multer from "multer"
 
 mongoose.set('strictQuery',false);
 
@@ -13,7 +11,7 @@ mongoose.set('strictQuery',false);
 
 dotenv.config()
 
-// create an app instance 
+// create an app instance z
 
 const app =express()
 

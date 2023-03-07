@@ -1,8 +1,13 @@
 import Blog from "../model/blog.js";
-
+import dotenv from 'dotenv'
+import express from 'express';
+import multer from 'multer';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary'
 class  blogController{
     // functions to get all blogs
     static async getBlogs(req, res){
+        
         try {
             const blogs= await Blog.find()
             res.status(200).json({
@@ -34,13 +39,31 @@ class  blogController{
     }
     // create a blog
 static async createBlog(req, res){
+    cloudinary.config({
+        cloud_name: 'ddbcekah4',
+        api_key: '454378738612683',
+        api_secret: '6cnT-kFv_EBtFWjmzwbC_1VI_i8'
+      });
     try {
+        const storage = new CloudinaryStorage({
+            cloudinary,
+            params:{
+              folder: 'blogs-image',
+              allowed_formats: ['jpg', 'png']
+            }
+          });
+        const upload = multer({ storage }).single('image');
+        upload(req, res,async (err) =>{
+            if(err){
+             return console.log(err)
+            }
         const {title,category, content, author}= req.body;
-        const newBlog= await Blog.create({title,category,content,author}); 
+        const newBlog= await Blog.create({title,category,content,author, image:req.file.path}); 
         res.status(201).json({
             message:"New Blog Created Succesfully",
             data:newBlog
         })
+    })
     } catch (error) {
        
             res.status(500).json({
