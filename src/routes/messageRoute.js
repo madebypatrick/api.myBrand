@@ -8,7 +8,8 @@ router.get("/", messageController.getMessages);
 router.get("/:id", messageController.getMessage);
 router.post("/", messageController.createMessage);
 router.put("/:id", messageController.updateMessage )
-router.delete("/:id",restrictDelete, messageController.deleteMessage )
+router.delete("/:id", messageController.deleteMessage )
+// router.delete("/:id",restrictDelete, messageController.deleteMessage )
 
 
 

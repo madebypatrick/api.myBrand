@@ -58,7 +58,8 @@ static async createBlog(req, res){
              return console.log(err)
             }
         const {title,category, content, author}= req.body;
-        const newBlog= await Blog.create({title,category,content,author, image:req.file.path}); 
+        const newBlog= await Blog.create({title,category,content,author, image:req.file.path});  //for running 
+        // const newBlog= await Blog.create({title,category,content,author}); //for testing with jest
         res.status(201).json({
             message:"New Blog Created Succesfully",
             data:newBlog
