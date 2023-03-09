@@ -131,6 +131,11 @@ const blogFx = {
                 },
                 {
                     in: 'formData',
+                    name: 'category',
+                    required: false,
+                },
+                {
+                    in: 'formData',
                     name: 'content',
                     required: false,
                 },

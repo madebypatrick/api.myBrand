@@ -26,7 +26,7 @@ const paths = {
 const apiDoc = {
     swagger: '2.0',
     info: {
-        version: '1.0.0.',
+        version: '1.0.0',
         title: 'My Brand API',
         description: 'Documentation of my Brands API',
     
@@ -41,13 +41,13 @@ const apiDoc = {
     // basePath: '/',
     schemes: ['http', 'https'],
     
-    securityDefinitions: {
-        JWT: {
-            type: 'apiKey',
-            name: 'Authorization',
-            in: 'header',
-        },
-    },
+    // securityDefinitions: {
+    //     JWT: {
+    //         type: 'apiKey',
+    //         name: 'Authorization',
+    //         in: 'header',
+    //     },
+    // },
     
     consumes: ['application/json'],
     produces: ['application/json'],
