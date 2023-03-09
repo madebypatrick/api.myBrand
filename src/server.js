@@ -11,7 +11,7 @@ mongoose.set('strictQuery',false);
 
 dotenv.config()
 
-// define port and host
+// define port and host of the server
 const host =process.env.HOST;
 const port =process.env.PORT;
 
