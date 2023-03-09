@@ -4,11 +4,14 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import allRoutes from "./routes/allRoutes.js"
+
 mongoose.set('strictQuery',false);
 
 // configure dotenv
 
 dotenv.config()
+
+
 
 // create an app instance z
 
