@@ -138,4 +138,3 @@ static async updateBlog(req,res){
 }
 
 export default blogController
-

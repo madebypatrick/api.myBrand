@@ -40,7 +40,8 @@ static async createMessage(req, res){
 
         const newMessage= await Message.create({fullname,email,from,message}); 
         res.status(201).json({
-            message:"New Message Created Succesfully",
+            ok:true,
+            message:"Your message has been sent, and We will get back to you shortly.",
             data:newMessage
         })
     } catch (error) {

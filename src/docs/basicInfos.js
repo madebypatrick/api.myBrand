@@ -41,13 +41,13 @@ const apiDoc = {
     // basePath: '/',
     schemes: ['http', 'https'],
     
-    securityDefinitions: {
-        JWT: {
-            type: 'apiKey',
-            name: 'Authorization',
-            in: 'header',
-        },
-    },
+    // securityDefinitions: {
+    //     JWT: {
+    //         type: 'apiKey',
+    //         name: 'Authorization',
+    //         in: 'header',
+    //     },
+    // },
     
     consumes: ['application/json'],
     produces: ['application/json'],

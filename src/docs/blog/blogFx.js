@@ -61,8 +61,8 @@ const blogFx = {
            parameters: [],
            consumes: ['application/json'],
            responses:{
-            201: {
-                description: 'Created',
+            200: {
+                description: 'OK',
             },
             400: {
                 description: 'Bad Request'
