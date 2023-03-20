@@ -41,7 +41,7 @@ static async createnewsLetter(req, res){
         const newnewsLetter= await newsLetter.create({email}); 
         res.status(201).json({
             ok:true,
-            newsLetter:"Your newsLetter subscription has been sent!",
+            message:"Your newsLetter subscription has been sent!",
             data:newnewsLetter
         })
     } catch (error) {
