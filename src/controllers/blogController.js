@@ -38,42 +38,47 @@ class  blogController{
         }
     }
     // create a blog
-static async createBlog(req, res){
+static async createBlog(req, res) {
     cloudinary.config({
         cloud_name: 'ddbcekah4',
         api_key: '454378738612683',
         api_secret: '6cnT-kFv_EBtFWjmzwbC_1VI_i8'
-      });
+    });
+
     try {
         const storage = new CloudinaryStorage({
             cloudinary,
-            params:{
-              folder: 'blogs-image',
-              allowed_formats: ['jpg', 'png']
+            params: {
+                folder: 'blogs-image',
+                allowed_formats: ['jpg', 'png']
             }
-          });
-        const upload = multer({ storage }).single('image');
-        upload(req, res,async (err) =>{
-            if(err){
-             return console.log(err)
-            }
-        const {title,category, content, author}= req.body;
-        const newBlog= await Blog.create({title,category,content,author, image:req.file.path});  //for running 
-        // const newBlog= await Blog.create({title,category,content,author}); //for testing with jest
-        res.status(201).json({
-            message:"New Blog Created Succesfully",
-            data:newBlog
-        })
-    })
-    } catch (error) {
-       
-            res.status(500).json({
-                message:"server error"
-            });
-        
-    }
+        });
 
+        const upload = multer({ storage }).single('image');
+        upload(req, res, async (err) => {
+            if (err) {
+                return res.status(400).json({ message: "File upload failed", error: err });
+            }
+
+            const { title, category, content, author } = req.body;
+            const imagePath = req.file ? req.file.path : null;
+
+            try {
+                const newBlog = await Blog.create({ title, category, content, author, image: imagePath });
+
+                res.status(201).json({
+                    message: "New Blog Created Successfully",
+                    data: newBlog
+                });
+            } catch (error) {
+                res.status(500).json({ message: "Failed to create blog", error: error });
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error: error });
+    }
 }
+
 
 // update blog
 static async updateBlog(req,res){
