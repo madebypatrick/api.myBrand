@@ -1,11 +1,11 @@
 import express from "express";
-import blogController from "../controllers/blogController.js";
-import signupController from "../controllers/signupController.js";
+import {
+  signupController,
+  signupValidation,
+} from "../controllers/signupController.js";
 
 const router = express.Router();
 
-router.post("/", signupController);
+router.post("/", signupValidation, signupController);
 
-
-
-export default router
+export default router;
